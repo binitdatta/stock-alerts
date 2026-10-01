@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SMS Opt-In · Stock Command Center</title>
+  <style>
+    :root { --text: #1d2433; --muted: #5b6475; --line: #e3e7ee; --accent: #0b5cd5; --ok: #17803d; --ok-bg: #eaf7ee; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 16px/1.6 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--text); background: #f6f8fb; }
+    main { max-width: 760px; margin: 0 auto; padding: 40px 20px 64px; }
+    h1 { font-size: 2rem; margin: 0 0 4px; }
+    h2 { font-size: 1.15rem; margin: 0 0 .75rem; }
+    .meta { color: var(--muted); margin: 0 0 1.5rem; }
+    .note { background: #fff8e6; border: 1px solid #f1d48a; border-radius: 8px; padding: 12px 14px; font-size: .92rem; margin-bottom: 1.5rem; }
+    .card { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 22px 24px; margin-bottom: 1.25rem; box-shadow: 0 1px 2px rgba(16,24,40,.04); }
+    label.field { display: block; font-weight: 600; font-size: .9rem; margin-bottom: 6px; }
+    input[type="tel"] { width: 100%; max-width: 320px; padding: 10px 12px; font-size: 1rem; border: 1px solid #c9d1dd; border-radius: 8px; }
+    .hint { color: var(--muted); font-size: .85rem; margin: 6px 0 16px; }
+    .consent { display: flex; gap: 10px; align-items: flex-start; margin: 4px 0 10px; }
+    .consent input { width: 18px; height: 18px; margin-top: 3px; flex: 0 0 auto; }
+    .consent span { font-weight: 600; }
+    .disclosure { color: var(--muted); font-size: .9rem; margin: 0 0 18px; }
+    button { background: var(--accent); color: #fff; border: 0; border-radius: 8px; padding: 10px 18px; font-size: 1rem; font-weight: 600; opacity: .6; cursor: not-allowed; }
+    .confirm { border: 1px solid #b7e1c3; background: var(--ok-bg); color: var(--ok); border-radius: 8px; padding: 12px 14px; font-weight: 600; margin-bottom: 10px; }
+    ol { padding-left: 1.2rem; }
+    pre { background: #f6f8fb; border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; font-size: .9rem; white-space: pre-wrap; margin: 0; }
+    a { color: var(--accent); }
+    footer { margin-top: 2rem; color: var(--muted); font-size: .9rem; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>SMS Opt-In</h1>
+  <p class="meta">Stock Command Center, operated by Binit Datta (registered brand: Binit Datta)</p>
+
+  <div class="note">
+    This page is a public copy of the consent step in the Stock Command Center application, published so it can be
+    reviewed without signing in. The real form is on the application's <strong>Alert Settings</strong> page, behind a
+    login, and is used only by the account owner to receive alerts on his own phone. This copy does not collect or
+    submit any information.
+  </div>
+
+  <section class="card" aria-labelledby="form-title">
+    <h2 id="form-title">Step 1 · Alert Settings: SMS consent</h2>
+    <form onsubmit="return false" aria-describedby="sms-disclosure">
+      <label class="field" for="phone">Mobile number for alerts</label>
+      <input id="phone" type="tel" placeholder="+1 312 555 0100" autocomplete="off" disabled>
+      <p class="hint">US number in international format. Only the account owner's own number is entered.</p>
+
+      <label class="consent" for="sms-consent">
+        <input id="sms-consent" type="checkbox" disabled>
+        <span>SMS enabled: I agree to receive automated stock alert text messages</span>
+      </label>
+      <p class="disclosure" id="sms-disclosure">
+        By checking <strong>SMS enabled</strong>, you agree to receive automated stock price alert text messages from
+        Binit Datta (Stock Command Center) at the number above. Message frequency varies with market activity.
+        Message and data rates may apply. Reply <strong>STOP</strong> to opt out or <strong>HELP</strong> for help.
+        Consent is not a condition of any purchase. See our <a href="privacy-policy.html">Privacy Policy</a> and
+        <a href="terms.html">Terms &amp; Conditions</a>.
+      </p>
+      <p class="hint">The checkbox is unchecked by default; nothing is sent until the owner checks it and saves.</p>
+      <button type="button" disabled>Save alert settings</button>
+    </form>
+  </section>
+
+  <section class="card" aria-labelledby="after-title">
+    <h2 id="after-title">Step 2 · What the owner sees after saving</h2>
+    <div class="confirm" role="status">✓ Saved 2 change(s).</div>
+    <p class="disclosure">The Alert Settings page reloads with the confirmation above, the box shown as checked and the
+      saved number shown masked (for example <code>+1••••••0100</code>). From then on, alerts are sent only when a
+      watched stock crosses a $2, $5 or $10 move from its previous close, at most once per stock per threshold per day.</p>
+  </section>
+
+  <section class="card" aria-labelledby="msg-title">
+    <h2 id="msg-title">Example alert message</h2>
+    <pre>Binit Datta
+STOCK ALERT [PAPER]
+NVDA $184.22
+Today +$8.18 (+4.65%)
+Vol 41.2M
+Crossed +$5
+Reply STOP to opt out</pre>
+  </section>
+
+  <section class="card" aria-labelledby="stop-title">
+    <h2 id="stop-title">Opting out</h2>
+    <ol>
+      <li>Reply <strong>STOP</strong> to any alert. One final confirmation is sent and no further messages follow.</li>
+      <li>Or uncheck <strong>SMS enabled</strong> on the Alert Settings page and save.</li>
+      <li>Reply <strong>HELP</strong> for help, or email <a href="mailto:binitdatta@gmail.com">binitdatta@gmail.com</a>.</li>
+    </ol>
+  </section>
+
+  <footer><a href="index.html">Home</a> · <a href="privacy-policy.html">Privacy Policy</a> · <a href="terms.html">Terms &amp; Conditions</a></footer>
+</main>
+</body>
+</html>
